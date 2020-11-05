@@ -245,10 +245,10 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
             _disableRowLoaders();
             _onBlur();
 
-            setStateText(_renderDescription(rowData));
-
             delete rowData.isLoading;
-            props.onPress(rowData, details);
+            props.onPress(rowData, details, stateText);
+
+            setStateText(_renderDescription(rowData));
             // }
           } else {
             _disableRowLoaders();
@@ -780,14 +780,14 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
                   }
                 : _onFocus
             }
-            onBlur={
-              onBlur
-                ? () => {
-                    _onBlur();
-                    onBlur();
-                  }
-                : _onBlur
-            }
+            // onBlur={
+            //   onBlur
+            //     ? () => {
+            //         _onBlur();
+            //         onBlur();
+            //       }
+            //     : _onBlur
+            // }
             clearButtonMode={clearButtonMode || 'while-editing'}
             onChangeText={_handleChangeText}
             {...userProps}
